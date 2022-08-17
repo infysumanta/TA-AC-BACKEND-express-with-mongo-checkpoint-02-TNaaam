@@ -15,7 +15,25 @@
 
     <section class="service" id="service">
         <h1 class="heading"> All <span>events</span> </h1>
+        <% events.forEach(function(event) { %>
+            <div class="event-list-row">
+                <a class="content" href="/events/<%= event.id %>">
+                    <h3>
+                        <%= event.title %>
+                    </h3>
+                    <p>
+                        <%= event.summary %>
+                    </p>
+                    <p>
+                        Location: <%= event.location %>
+                    </p>
+                    <p>
+                        Host: <%= event.host %>
+                    </p>
 
+                </a>
+            </div>
+            <% }); %>
 
     </section>
 

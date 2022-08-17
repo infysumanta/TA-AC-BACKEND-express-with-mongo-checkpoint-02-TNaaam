@@ -5,17 +5,29 @@
     </div>
   </section>
 
-  <section class="contact" id="contact">
-    <form action="">
+  <section class="create-event" id="create-event">
+    <form action="/events" method="post">
       <div class="inputBox">
-        <input type="text" placeholder="name">
-        <input type="email" placeholder="email">
+        <input type="text" placeholder="Title" name="title">
       </div>
       <div class="inputBox">
-        <input type="number" placeholder="number">
-        <input type="text" placeholder="subject">
+        <textarea name="summary" placeholder="Summary" id="" cols="30" rows="3"></textarea>
       </div>
-      <textarea name="" placeholder="your message" id="" cols="30" rows="10"></textarea>
+      <div class="inputBox">
+        <input type="text" placeholder="Host Name" name="host">
+      </div>
+      <div class="inputBox">
+        <input type="date" placeholder="Start Date" name="start_date">
+      </div>
+      <div class="inputBox">
+        <input type="date" placeholder="End Date" name="end_date">
+      </div>
+      <div class="inputBox">
+        <input type="text" placeholder="Category" name="event_category">
+      </div>
+      <div class="inputBox">
+        <input type="text" placeholder="Location" name="location">
+      </div>
       <input type="submit" value="Save Event" class="btn">
     </form>
 
