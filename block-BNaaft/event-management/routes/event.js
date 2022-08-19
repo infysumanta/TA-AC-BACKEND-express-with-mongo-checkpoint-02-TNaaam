@@ -1,12 +1,13 @@
 var express = require("express");
 var router = express.Router();
-
+var moment = require("moment");
 const Event = require("../models/event");
 const Remark = require("../models/remark");
 
 router.get("/", function (req, res, next) {
   Event.find({}, function (err, events) {
     if (err) return next(err);
+
     res.render("events", { events: events });
   });
 });
@@ -20,7 +21,11 @@ router.get("/:id", function (req, res, next) {
     .populate("remarks")
     .exec(function (err, event) {
       if (err) return next(err);
-      res.render("singleEvent", { event });
+      res.render("singleEvent", {
+        event,
+        start_date: moment(event.start_date).format("DD-MM-YYYY"),
+        end_date: moment(event.start_date).format("DD-MM-YYYY"),
+      });
     });
 });
 
@@ -28,7 +33,11 @@ router.get("/:id/edit", (req, res, next) => {
   var id = req.params.id;
   Event.findById(id, (err, event) => {
     if (err) return next(err);
-    res.render("editEvent", { event: event });
+    res.render("editEvent", {
+      event: event,
+      start_date: moment(event.start_date).format("YYYY-MM-DD"),
+      end_date: moment(event.start_date).format("YYYY-MM-DD"),
+    });
   });
 });
 
